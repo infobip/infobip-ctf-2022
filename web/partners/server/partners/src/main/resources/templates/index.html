@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:include="header :: header">
+</head>
+<body>
+<nav th:include="nav :: div"></nav>
+<div class="container">
+<div class="row">
+<div class="d-flex align-items-center justify-content-center">
+    <th:block th:if="${shoppingItems != null && not #lists.isEmpty(shoppingItems)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="item : ${shoppingItems}">
+                <tr scope="row">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.description}"></td>
+                    <td><a th:href="'/item?id='+${item.id}">Update</a></td>
+                    <td sec:authorize="hasAuthority('HIGH')">
+                        <a target="_blank" th:href="'/process?id='+${item.id}">Export item</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </th:block>
+    <th:block th:if="${shoppingItems == null || #lists.isEmpty(shoppingItems)}">
+        <h6>No items registered</h6>
+    </th:block>
+</div>
+</div>
+</div>
+</body>
+</html>

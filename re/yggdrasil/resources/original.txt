@@ -1,0 +1,3 @@
+The binary tree groans, and the file decrypts.
+
+ibctf{b1n_tr33-is-a-w4y-0f-IT_lyfe}

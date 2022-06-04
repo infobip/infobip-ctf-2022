@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<div class="row">
+<div class="container d-flex align-items-center justify-content-center">
+    <div th:include="partner :: div(@{/otp(challenge=${challenge})}, Challenge-response)"></div>
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    Input your response to challenge in the password box.
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    <a th:href="@{/login}">Lower authentication privilege needed? Login here</a>
+</div>
+</div>
+</body>
+</html>

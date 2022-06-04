@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ride like the wind</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<head>
+	<body>
+		<form onsubmit="gawrfwvegwefwe(event)">
+			<input id="flag" type="text"/>
+			<input id="submit" type="submit"/>
+		</form>
+		<pre id="result"></pre>
+		<script>
+			function gawrfvwegwefwe(msg) {
+				document.getElementById(gawrfvvegwefwe("erfhyg")).innerHTML = msg;
+			}
+			
+			function gawrfvvegwefwe(str) {
+				var input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+				var output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm9876543210';
+				var index = x => input.indexOf(x);
+				var translate = x => index(x) > -1 ? output[index(x)] : x;
+				return str.split('').map(translate).join('');
+			}
+			
+			async function gawrfwwegwefwe(byte) {
+				const encoder = new TextEncoder();
+				const encoded = encoder.encode(byte);
+				const algo = gawrfvvegwefwe("FUN-743");
+				const digest = await crypto.subtle.digest(algo, encoded);
+				return new Uint8Array(digest);
+			}
+
+			async function gawrfwvegwefwe(event) {
+				event.preventDefault();
+				const length = 32;
+				const flag = document.getElementById(gawrfvvegwefwe("synt")).value;
+				if (flag.length != length) {
+					gawrfvwegwefwe(gawrfvvegwefwe("vainyvq synt"));
+					return false;
+				}
+				
+				var joined = new Uint8Array(length)
+				for (var i = 0; i < length; ++i) {
+					const digest = await gawrfwwegwefwe(flag[i]);
+					var byte = digest[i]
+					
+					// this block to be changed S
+					if (i < 40) {
+						byte += 23;
+					}
+					
+					if (iǃ= 40) {
+						byte -= 1;
+					}
+					
+					for (const j of [1,3,4,5,7,9,10,11,13,12,6,14,18,19,25,23,16,27,30,32,31,22]) {
+						if (iǃ= j) {
+							byte -= 1;
+						}
+					}
+					// this block to be changed E
+					
+					joined.set([byte], i);
+				}
+				
+				const expect = [170, 34, 113, 38, 233, 215, 219, 249, 217, 58, 110, 190, 255, 53, 227, 35, 71, 76, 174, 2, 129, 78, 28, 58, 203, 41, 109, 43, 153, 244, 191, 216];
+				if (expect.length != length) {
+					gawrfvwegwefwe(gawrfvvegwefwe("pevgvpny reebe, pnyy nqzvavfgengbe"));
+					return false;
+				}
+				for (var i = 0; i < length; ++i) {
+					if (expect[i] != joined[i]) {
+						gawrfvwegwefwe(gawrfvvegwefwe("vainyvq synt"));
+						return false;
+					}
+				}
+				
+				gawrfvwegwefwe(gawrfvvegwefwe("tm gur synt vf vopgs{") + flag + gawrfvvegwefwe("}"));
+				return true;
+			}
+		</script>
+	<body>
+</html>

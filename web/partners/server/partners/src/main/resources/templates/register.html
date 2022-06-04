@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<div class="row top-margin">
+<div class="container d-flex align-items-center justify-content-center">
+    <div th:include="partner :: div(@{/register}, Register)"></div>
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    <a th:href="@{/login}">Already have an account? Login here</a>
+</div>
+</div>
+</body>
+</html>

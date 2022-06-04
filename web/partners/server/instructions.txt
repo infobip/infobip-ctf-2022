@@ -1,0 +1,3 @@
+# Password: 4ctJustL1k3Y0uKn0w
+su flag	
+cat /home/flag/flag.txt

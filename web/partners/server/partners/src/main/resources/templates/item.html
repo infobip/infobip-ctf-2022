@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<nav th:include="nav :: div"></nav>
+<div class="container">
+<div class="row">
+  <div class="d-flex align-items-center justify-content-center">
+    <h1 class="text-center">Shopping item</h1>
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <th:block th:if="${success != null}">
+      <div th:text="${success}"></div>
+    </th:block>
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <table class="table">
+      <tbody>
+      <form action="#" th:action="@{/item(id=${id})}" th:object="${shoppingItem}" method="post">
+        <tr scope="row">
+          <td>Name:</td><td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr scope="row">
+          <td>Description:</td><td><textarea th:field="*{description}" /></td>
+        </tr>
+        <tr scope="row">
+          <td>Price:</td><td><input type="number" th:field="*{price}" /></td>
+        </tr>
+        <tr scope="row">
+          <td colspan="2" class="text-center"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+        </tr>
+      </form>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</body>
+</html>

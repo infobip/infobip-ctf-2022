@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ride like the wind</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<head>
+	<body>
+		<form onsubmit="verify(event)">
+			<input id="flag" type="text"/>
+			<input id="submit" type="submit"/>
+		</form>
+		<pre id="result"></pre>
+		<script>
+			async function sha256(byte) {
+				const encoder = new TextEncoder();
+				const encoded = encoder.encode(byte);
+				const digest = await crypto.subtle.digest("SHA-256", encoded);
+				return new Uint8Array(digest);
+			}
+			
+			function result(msg) {
+				document.getElementById("result").innerHTML = msg;
+			}
+
+			async function verify(event) {
+				event.preventDefault();
+				const length = 32;
+				const flag = document.getElementById("flag").value;
+				if (flag.length != length) {
+					result("invalid flag");
+					return false;
+				}
+				
+				var joined = new Uint8Array(length)
+				for (var i = 0; i < length; ++i) {
+					const digest = await sha256(flag[i]);
+					const byte = digest[i]
+					joined.set([byte], i);
+				}
+				
+				const expect = [170, 34, 113, 38, 233, 215, 219, 249, 217, 58, 110, 190, 255, 53, 227, 35, 71, 76, 174, 2, 129, 78, 28, 58, 203, 41, 109, 43, 153, 244, 191, 216];
+				if (expect.length != length) {
+					result("critical error, call administrator");
+					return false;
+				}
+				for (var i = 0; i < length; ++i) {
+					if (expect[i] != joined[i]) {
+						result("invalid flag");
+						return false;
+					}
+				}
+				
+				result("gz the flag is ibctf{" + flag + "}");
+				return true;
+			}
+		</script>
+	<body>
+</html>

@@ -1,0 +1,10 @@
+openssl req -newkey ec:<(openssl ecparam -name secp384r1) -nodes -keyform PEM -keyout CA.key -x509 -days 365 -outform PEM -out CA.crt
+openssl ecparam -name secp384r1 -genkey -noout -out server.ec.key
+openssl req -new -key server.key -out server.req
+openssl req -new -key server.ec.key -out server.req
+openssl x509 -req -in server.req -CA CA.crt -CAkey CA.key -set_serial 0x3E8  -extensions server -days 365 -outform PEM -out server.crt
+openssl ecparam -name secp384r1 -genkey -noout -out client.ec.key
+openssl req -new -key client.ec.key -out client.req
+openssl x509 -req -in client.req -CA CA.crt -CAkey CA.key -set_serial 0x3E8 -extensions server -days 365 -outform PEM -out client.crt
+openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12
+openssl pkcs12 -export -inkey client.ec.key -in client.crt -out client.p12

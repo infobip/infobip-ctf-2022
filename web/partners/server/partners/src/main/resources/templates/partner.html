@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="partnerform(rlpath, title)">
+    <h1 class="text-center" th:text="${title}"></h1>
+    <th:block th:if="${success != null}">
+        <div class="text-center" th:text="${success}"></div>
+    </th:block>
+    <th:block th:if="${challenge != null}">
+        <div class="text-center">Challenge: <span th:text="${challenge}"></span></div>
+    </th:block>
+    <table class="table">
+        <tbody>
+            <form action="#" th:action="${rlpath}" th:object="${partner}" method="post">
+                <tr scope="row">
+                    <td>Username:</td><td><input type="text" th:field="*{username}" /></td>
+                </tr>
+                <tr scope="row">
+                    <td>Password:</td><td><input type="password" th:field="*{password}" /></td>
+                </tr>
+                <tr scope="row">
+                    <td colspan="2" class="text-center"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<nav th:include="nav :: div"></nav>
+<div class="container-md">
+  <div class="row">
+    <div class="d-flex align-items-center justify-content-center">
+      <h1 class="text-center">Current processing template</h1>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <pre th:if="${template != null && !#strings.isEmpty(template)}" class="prettyprint lang-xml" th:text="${template}"></pre>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <a th:href="@{/template/reset}">Reset template value here</a>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <table class="table">
+        <tbody>
+        <form action="#" th:action="@{/template}" method="post">
+          <tr scope="row">
+            <td class="text-center">New template:</td>
+          </tr>
+          <tr scope="row">
+            <td class="text-center"><textarea name="template"></textarea></td>
+          </tr>
+          <tr scope="row">
+            <td class="text-center"><input type="submit" value="Submit" />
+          </tr>
+        </form>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

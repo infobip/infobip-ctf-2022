@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<nav th:include="nav :: div"></nav>
+<div class="container">
+<div class="row">
+<div class="d-flex align-items-center justify-content-center">
+    <div>Uploading your profile picture gives us increased safety in security sensitive operations with our partners.</div>
+</div>
+<div class="d-flex align-items-center justify-content-center bottom-margin">
+    <div>Having a profile picture is very recommended.</div>
+</div>
+<div class="d-flex align-items-center justify-content-center">
+    <img th:if="${avatar != null}" th:src="|data:image/${avatar.fileType};base64,${avatar.image}|"/>
+</div>
+<div class="d-flex align-items-center justify-content-center">
+    <table class="table">
+        <tbody>
+        <form action="#" th:action="@{/avatar}" method="post" enctype="multipart/form-data">
+            <tr scope="row">
+                <td>New profile photo (max 512KB):</td><td><input class="form-control" type="file" name="file" /></td>
+            </tr>
+            <tr scope="row">
+                <td colspan="2" class="text-center"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

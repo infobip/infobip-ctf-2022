@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<nav th:include="nav :: div"></nav>
+<div class="container">
+  <div class="row">
+      <th:block th:if="${key == null}">
+        <div class="d-flex align-items-center justify-content-center">
+          <h6>No keys registered</h6>
+        </div>
+        <div class="d-flex align-items-center justify-content-center bottom-margin">
+          <div>Please contact our support to register keys for your account</div>
+        </div>
+      </th:block>
+      <th:block th:if="${key != null}">
+        <div class="d-flex align-items-center justify-content-center">
+          <h6>Key registered</h6><br>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+          <code th:text="${key}"></code>
+        </div>
+      </th:block>
+  </div>
+</div>
+</div>
+</body>
+</html>

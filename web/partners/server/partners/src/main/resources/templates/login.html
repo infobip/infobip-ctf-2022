@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="header :: header">
+</head>
+<body>
+<div class="row top-margin">
+<div class="container d-flex align-items-center justify-content-center">
+    <div th:include="partner :: div(@{/login}, Login)"></div>
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    <a th:href="@{/otp}">For higher authentication level, login here</a>
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    <span>or</span>
+</div>
+<div class="container d-flex align-items-center justify-content-center">
+    <a th:href="@{/register}">Register here</a>
+</div>
+</div>
+</body>
+</html>

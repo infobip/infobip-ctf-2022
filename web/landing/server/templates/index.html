@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+		.absolute-center {
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			
+			align-items: center;
+			justify-content: center;
+		}
+		.violet {
+			background: #9400D3;
+		}
+		.indigo {
+			background: #4B0082;
+		}
+		.blue {
+			background: #0000FF;
+		}
+		.green {
+			background: #00FF00;
+		}
+		.yellow {
+			background: #FFFF00;
+		}
+		.orange {
+			background: #FF7F00;
+		}
+		.red {
+			background: #FF0000;
+		}
+		div {
+			height: 100vh;
+			font-size: 32px;
+		}
+		td[colspan="2"] {
+			text-align: center;
+		}
+		input {
+			height: 32px;
+			width: 300px;
+		}
+		textarea {
+			height: 120px;
+			width: 420px;
+		}
+		p {
+			font-size: 16px;
+			max-width: 400px;
+			text-align: center
+		}
+	</style>
+	<script>
+		function sendRequest() {
+			let name = document.getElementById("name").value;
+			let email = document.getElementById("email").value;
+			let phone = document.getElementById("phone").value;
+			let comment = document.getElementById("comment").value;
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "/contact?type=json", true);
+			xhr.onreadystatechange = function(e) {
+				if (xhr.status === 200) {
+					console.log(xhr.responseText);
+					var response = document.getElementById("response");
+					response.textContent = xhr.responseText;
+				}
+			}
+			xhr.send(JSON.stringify({
+				"person": {
+					"name": name,
+					"email": email,
+					"phone": phone,
+					"comment": comment
+				}
+			}));
+		}
+	</script>
+	</head>
+	<body>
+		<div class="absolute-center violet">WE ARE BEST BUSINESS</div>
+		<div class="absolute-center indigo">WE GIVE MASSIVE DISCOUNTS</div>
+		<div class="absolute-center blue">WE DO EVERYTHING YOU WANT</div>
+		<div class="absolute-center green">WE MAKE YOUR DREAMS COME TRUE</div>
+		<div class="absolute-center yellow">WE ARE BEST BUSINESS</div>
+		<div class="absolute-center orange">CONTACT US FOR BEST PRICES</div>
+		<div class="absolute-center red">
+			<form action="javascript:sendRequest()">
+				<table>
+					<tr>
+						<td><label for="name">Name:</label></td>
+						<td><input id="name" name="name" type="text" min=2 required/></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email:</label></td>
+						<td><input id="email" name="email" type="email" required/></td>
+					</tr>
+					<tr>
+						<td><label for="phone">Phone:</label></td>
+						<td><input id="phone" name="phone" type="tel" required/></td>
+					</tr>
+					<tr>
+						<td colspan=2><label for="comment">Tell us your needs:</label></td>
+					</tr>
+					<tr>
+						<td colspan=2><textarea id="comment" name="comment" required></textarea></td>
+					</tr>
+					<tr>
+						<td colspan=2><input name="submit" type="submit" value="Submit" style="font-size:22px" required/></td>
+					</tr>
+				</table>
+				<p id="response" align="center"></p>
+			</form>
+		</div>
+	</body>
+</html>
